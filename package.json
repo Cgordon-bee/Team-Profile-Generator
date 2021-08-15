@@ -1,0 +1,24 @@
+{
+  "name": "team-profile-generator",
+  "version": "1.0.0",
+  "description": "I want to generate a webpage that displays my team's basic info",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cgordon-bee/Team-Profile-Generator.git"
+  },
+  "keywords": [
+    "team",
+    "profiles",
+    "information"
+  ],
+  "author": "carol gordon",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Cgordon-bee/Team-Profile-Generator/issues"
+  },
+  "homepage": "https://github.com/Cgordon-bee/Team-Profile-Generator#readme"
+}
