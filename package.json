@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/Cgordon-bee/Team-Profile-Generator/issues"
   },
-  "homepage": "https://github.com/Cgordon-bee/Team-Profile-Generator#readme"
+  "homepage": "https://github.com/Cgordon-bee/Team-Profile-Generator#readme",
+  "devDependencies": {
+    "jest": "^27.0.6"
+  }
 }
