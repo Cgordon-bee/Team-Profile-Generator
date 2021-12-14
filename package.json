@@ -25,6 +25,7 @@
     "jest": "^27.0.6"
   },
   "dependencies": {
+    "bulma-start": "0.0.4",
     "inquirer": "^8.1.2"
   }
 }

@@ -1,6 +1,7 @@
 
 const inquirer = require('inquirer');
 const util =require("util");
+var management = new Manager ([answers.managerName, answers.managerID, answers.manager.getEmail, answers.managerOfficerNumber]);
 
 //fs needed to generate html
 const fs = require("fs");
@@ -14,6 +15,8 @@ const engineer =require("./Team lib/engineer");
 const employee =require("./Team lib/employee ");
 const intern = require("./Team lib/Intern");
 const { error } = require('console');
+const Manager = require('./Team lib/manager');
+
 
 
 console.log(manager.getName());
@@ -60,8 +63,8 @@ inquirer
 
 /* Resolve correct pathway to folder*/
 .then(answers => {
-fs.writeFileSync (generatedhtmlFilePath,"");
-})
+new manager()
+
 
 // if error add options
 .catch(error => {
@@ -69,7 +72,7 @@ if(error.isTtyError) {
 }
 else {
 
-
+}
 });
 
 // function added for prompt to restart if additional team members needed//
@@ -107,24 +110,12 @@ function additionalEmployees()
             choices: "engineer, intern",
     
     
-    }
+    },
     ])
     
-    /* Resolve correct pathway to folder*/
-    .then(answers => {
-    fs.writeFileSync (generatedhtmlFilePath,"");
-    })
-    
-    // if error add options
-    .catch(error => {
-    if(error.isTtyError) {
-    }
-    else {
-    
-    
-    });
+    const promptUser = () => {
+        return inquirer
+    .prompt(questions);
 
-
-
-
-}
+    }};
+})
