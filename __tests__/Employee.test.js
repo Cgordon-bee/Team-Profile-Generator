@@ -1,4 +1,5 @@
  const Employee = require("../lib/Employee")
+ 
 // should create new instance of employee
  test('should create new employee instance', () => {
    const newCopy = new Employee()

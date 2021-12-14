@@ -7,15 +7,16 @@ test('should create a new instance of Engineer', () => {
 })
 
 test('should set attributes by a constructor', () => {
-    const newCopy = new Engineer("Chestnut", 1, "chestnut@pen.com","github")
+    const newCopy = new Engineer("Chestnut", 1, "chestnut@pen.com","Github")
     expect(newCopy.name).toBe("Chestnut")
     expect(newCopy.id).toBe(1)
     expect(newCopy.email).toBe("chestnut@pen.com")
-    expect(newCopy.github).toBe("github")
+    expect(newCopy.github).toBe("Github")
 })
 
 test('should return role', () => {
-    expect(newCopy.getRole()).toBe(Engineer)
+    const newCopy = new Engineer("Chestnut" ,1, "chestnut@pen.com", "Github")
+    expect(newCopy.getRole()).toBe("Engineer")
     
 })
 
