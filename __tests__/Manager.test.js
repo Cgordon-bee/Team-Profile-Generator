@@ -6,7 +6,7 @@ test('should create new instance of Manager', () => {
 
 })
 test('should set attributes by a constructor ', () => {
-    const newCopy = new Manager("Karen", 1, "Karen@books.com", "officeNumber")
+    const newCopy = new Manager("Karen", 1, "Karen@books.com", "121-897-1244")
     expect(newCopy.name).toBe("Karen")
     expect(newCopy.id).toBe(1)
     expect(newCopy.email).toBe("Karen@books.com")

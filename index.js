@@ -1,121 +1,130 @@
 
 const inquirer = require('inquirer');
 const util =require("util");
-var management = new Manager ([answers.managerName, answers.managerID, answers.manager.getEmail, answers.managerOfficerNumber]);
-
-//fs needed to generate html
 const fs = require("fs");
 
-const writeFileAsync = util.promisify(fs.writeFile);
-const generatedhtmlFilePath ="./"
-
 //inport employee classes
-const manager =require("./Team lib/manager");
-const engineer =require("./Team lib/engineer");
-const employee =require("./Team lib/employee ");
-const intern = require("./Team lib/Intern");
-const { error } = require('console');
-const Manager = require('./Team lib/manager');
+const Manager =require("./lib/Manager");
+const Engineer =require("./lib/Engineer");
+const Intern = require("./lib/Intern");
+const { create } = require('domain');
+
+var teamMembers= []
+
+console.log("Welcome to your team generator app")
 
 
 
-console.log(manager.getName());
-console.log(manager.getId());
-console.log(manager.getEmail());
-console.log(manager.getRole());
-console.log(manager.getOfficerNumber());
-
-// Initial Prompt
-inquirer
+function Team() {
+    function createManager(){
+        inquirer
 .prompt(
 [
     { 
-        name: "ManagerName",
-        type: "imput",
+        type: "input",
         message:"enter team manager's name",
+        name: "name",
     },
 
     { 
-        name: "ManagerID",
-        type: "imput",
+        type: "input",
         message:"Enter Team manager's employee ID",
+        name:"id",
     },
 
     { 
-        name: "ManagerEmail",
-        type: "imput",
+        type: "input",
         message:"enter team manager's Email",
+        name:"email",
     },
     { 
-        name: "ManagerOfficeNumber",
-        type: "imput",
+    
+        type: "input",
         message:"enter team manager Officer Number",
+        name:"officeNumber",
     },
-
-     {  name: "additionalEmployees",
-        type: "list",
-        message: "select team member to add",
-        choices: "engineer, intern",
-
-
-}
+   
+    
 ])
+.then(answers =>{
+const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber)
+teamMembers.push(manager)
+createTeam()
+})
+    }
+function createTeam() {
+    inquirer.prompt([{
+        type: "list",
+        name:"membersChoice",
+        message:"What type of team member would you like to add?",
+        choice:[
+            "Engineer",
+            "Intern",
+            "done",
+        ]
 
-/* Resolve correct pathway to folder*/
-.then(answers => {
-new manager()
+    }
 
 
-// if error add options
-.catch(error => {
-if(error.isTtyError) {
+    ]
+
+    ).then(answer =>{
+        if (answer.membersChoice==="Engineer") {
+            createEngineer()
+            
+        } else if (answer.membersChoice==="Intern") {
+            createIntern()
+            
+        } else{
+            buildTeam()
+        }
+    })
+    
+
 }
-else {
-
-}
-});
-
-// function added for prompt to restart if additional team members needed//
-function additionalEmployees()
-{
-    inquirer
-    .prompt(
+function createEngineer(){
+    inquirer.
+prompt(
     [
         { 
-            name: "ManagerName",
-            type: "imput",
-            message:"enter team manager's name",
+            type: "input",
+            message:"enter team engineer's name",
+            name: "name",
         },
     
         { 
-            name: "ManagerID",
-            type: "imput",
-            message:"Enter Team manager's employee ID",
+            type: "input",
+            message:"Enter engineer's employee ID",
+            name:"id",
         },
     
         { 
-            name: "ManagerEmail",
-            type: "imput",
-            message:"enter team manager's Email",
+            type: "input",
+            message:"enter engineer's Email",
+            name:"email",
         },
         { 
-            name: "ManagerOfficeNumber",
-            type: "imput",
-            message:"enter team manager Officer Number",
+        
+            type: "input",
+            message:"enter engineer's github page",
+            name:"githubDetails",
         },
-    
-         {  name: "additionalEmployees",
-            type: "list",
-            message: "select team member to add",
-            choices: "engineer, intern",
-    
-    
-    },
-    ])
-    
-    const promptUser = () => {
-        return inquirer
-    .prompt(questions);
+        
+    ]
 
-    }};
+).then(answers =>{
+    const engineer = new Engineer (answers.name, answers.id, answers.email, answers.githubDetails)
+    teamMembers.push(Engineer)
+    createTeam()
+
 })
+
+
+}}
+
+function createIntern() {
+
+
+}
+
+Team()
