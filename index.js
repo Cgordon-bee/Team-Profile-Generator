@@ -119,12 +119,46 @@ prompt(
 
 })
 
+}
 
-}}
 
 function createIntern() {
+    inquirer
+    .prompt(
+[
+    {   
+        type: "input",
+        message: "enter the name of the Intern",
+        name: "name",
 
+        type: "input",
+        message: " enter Intern's id",
+        name: "id",
+
+        type: "input",
+        message: "enter Intern's email address",
+        name: "email",
+
+        type: "input",
+        message: "enter the name of the Intern's school",
+        name: "school",
+    
+
+    }]
+
+
+    ).then(answers =>{
+        const intern = new Intern(answers.name, answers.id, answers.email, answers.school)
+        teamMembers.push(Intern)
+        createTeam()
+
+        }
+
+    )
 
 }
 
+
+
+}
 Team()
